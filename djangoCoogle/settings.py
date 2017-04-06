@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES = { 'default': dj_database_url.config() }
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -104,19 +103,24 @@ WSGI_APPLICATION = 'djangoCoogle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'coogledjangodb',
-        'USER': 'schoogler',
-        'PASSWORD': 'schoogler_$007Bond$',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'coogledjangodb',
+#         'USER': 'schoogler',
+#         'PASSWORD': 'schoogler_$007Bond$',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
+
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES = { 'default': dj_database_url.config() }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
