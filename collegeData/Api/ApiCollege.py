@@ -33,8 +33,9 @@ def collegeSearch(self, request, format=None):
 
     '''
     try:
+        state = StateV1_0.objects.get(StateName=request['State'])
         sendData = []
-        queryset = CollegeV1_0.objects.filter(Q(College__icontains=request['College'])&(Q(StateId = request['StateId'])))
+        queryset = CollegeV1_0.objects.filter(Q(College__icontains=request['College']) & (Q(StateId=state.StateId)))
         if len(queryset) == 0:
                 return "RECORD_NOT_FOUND"  # bad request
         count = 1
