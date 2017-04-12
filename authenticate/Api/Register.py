@@ -1,4 +1,4 @@
-import bcrypt
+# import bcrypt
 from ..models import *
 from collegeData.models import CollegeV1_0,StateV1_0
 from django.db.models import Q
@@ -98,11 +98,12 @@ def registerUser(self, request):
 
 
     try:
-        # Hash the password
-        password = EncryptPassword(request['Password'], request)
-        if password == 0:
-            return "PASSWORD_ERROR"
-        request['Password'] = EncryptPassword(request['Password'], request)
+        # # Hash the password
+        # password = EncryptPassword(request['Password'], request)
+        # if password == 0:
+        #     return "PASSWORD_ERROR"
+        # request['Password'] = EncryptPassword(request['Password'], request)
+
 
         # Check if user is already present
         if "Phone" in request:
