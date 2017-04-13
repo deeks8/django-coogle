@@ -57,9 +57,9 @@ def allCollegeListInState(self, request, format=None):
 
     '''
     try:
-        # state = StateV1_0.objects.get(StateName=request['State'])
+        state = StateV1_0.objects.get(StateName=request['State'])
         sendData = []
-        queryset = CollegeV1_0.objects.all()
+        queryset = CollegeV1_0.objects.filter(StateId = state.StateId)
         for item in queryset:
             sendData.append({"College":item.College,"CollegeId":item.CollegeId})
         return sendData
