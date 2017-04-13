@@ -10,5 +10,7 @@ urlpatterns = [
    url(r'^statelist/$', views.StateIdListV1_0.as_view()),
    url(r'^collegesearch/$', views.CollegeSearchV1_0.as_view()),
    url(r'^allstates/$', views.AllStateListV1_0.as_view()),
+   url(r'^allcollegesinstates/$', views.AllCollegeInStateListV1_0.as_view()),
+
 
 ]

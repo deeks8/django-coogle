@@ -47,3 +47,23 @@ def collegeSearch(self, request, format=None):
         return sendData
     except Exception as e:
         return "RECORD_NOT_FOUND" #bad request
+
+
+
+def allCollegeListInState(self, request, format=None):
+    '''
+    retrieve a state data
+    :return:
+
+    '''
+    try:
+        state = StateV1_0.objects.get(StateName=request['State'])
+        sendData = []
+        queryset = CollegeV1_0.objects.filter(StateId = state.StateId)
+        for item in queryset:
+            sendData.append({"College":item.College,"CollegeId":item.CollegeId})
+        return sendData
+    except Exception as e:
+        print e
+        return "RECORD_NOT_FOUND" #bad request)
+
