@@ -75,3 +75,19 @@ def stateId(self, request, format=None):
     except Exception as e:
         return "RECORD_NOT_FOUND" #bad request)
 
+def allStateList(self, request, format=None):
+    '''
+    retrieve a state data
+    :return:
+
+    '''
+    try:
+        if request["All"] == "True":
+            sendData = []
+            queryset = StateV1_0.objects.all()
+            for item in queryset:
+                sendData.append({"State":item.StateName,"StateId":item.StateId})
+            return sendData
+    except Exception as e:
+        return "RECORD_NOT_FOUND" #bad request)
+

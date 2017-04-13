@@ -91,3 +91,20 @@ class CollegeSearchV1_0(APIView):
             return Response("400", status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+
+class AllStateListV1_0(APIView):
+    def post(self, request, format=None):
+        '''
+        :Author: Deeksha
+        :param request: contains the parameter sent by the user
+        :param format:
+        :return:
+        '''
+
+        returnData = ApiState.allStateList(self, request.data)
+        if returnData == "RECORD_NOT_FOUND":
+            return Response("400", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)

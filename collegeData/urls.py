@@ -9,5 +9,6 @@ urlpatterns = [
    url(r'^statedetail/$', views.StateDetailV1_0.as_view()),
    url(r'^statelist/$', views.StateIdListV1_0.as_view()),
    url(r'^collegesearch/$', views.CollegeSearchV1_0.as_view()),
+   url(r'^allstates/$', views.AllStateListV1_0.as_view()),
 
 ]

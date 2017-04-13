@@ -1,4 +1,4 @@
-# import bcrypt
+import bcrypt
 from ..models import *
 from collegeData.models import CollegeV1_0,StateV1_0
 from django.db.models import Q
@@ -68,9 +68,9 @@ def CreateUser(userObj,request):
         userObj.Password=request['Password']
         userObj.save()
         if "CollegeId" in request:
-            userObj.CollegeId=CollegeV1_0.objects.get(CollegeId = request['CollegeId'])
+            userObj.CollegeId=CollegeV1_0.objects.get(College = request['College'])
         if "StateId" in request:
-            userObj.StateId=StateV1_0.objects.get(StateId = request['StateId'])
+            userObj.StateId=StateV1_0.objects.get(StateName = request['State'])
 
 
         userObj.save()
@@ -99,10 +99,10 @@ def registerUser(self, request):
 
     try:
         # # Hash the password
-        # password = EncryptPassword(request['Password'], request)
-        # if password == 0:
-        #     return "PASSWORD_ERROR"
-        # request['Password'] = EncryptPassword(request['Password'], request)
+        password = EncryptPassword(request['Password'], request)
+        if password == 0:
+            return "PASSWORD_ERROR"
+        request['Password'] = EncryptPassword(request['Password'], request)
 
 
         # Check if user is already present
