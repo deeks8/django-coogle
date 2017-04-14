@@ -11,7 +11,7 @@ import responses
 import json
 
 from .models import *
-from Api import Register
+from Api import Register,Login
 
 class RegisterUser(APIView):
     def post(self, request, format=None):
@@ -23,6 +23,23 @@ class RegisterUser(APIView):
         '''
 
         returnData = Register.registerUser(self, request.data)
+        if returnData == "RECORD_NOT_FOUND":
+            return Response("400", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+
+class LoginListV1_0(APIView):
+    def post(self,request,format=None):
+        '''
+        :param request: contains the parameter sent by the user
+        :param format:
+        :return:
+        '''
+
+        returnData=Login.Login(self,request.data)
+
         if returnData == "RECORD_NOT_FOUND":
             return Response("400", status=status.HTTP_400_BAD_REQUEST)
         else:
