@@ -57,7 +57,7 @@ def CreateUser(userObj,request):
     '''
 
     try:
-
+        print request
         if "Phone" in request:
             userObj.Phone=request['Phone']
         if "EmailId" in request:
@@ -67,16 +67,15 @@ def CreateUser(userObj,request):
         userObj.RegisterTime=datetime.datetime.now()
         userObj.Password=request['Password']
         userObj.save()
-        if "CollegeId" in request:
-            userObj.CollegeId=CollegeV1_0.objects.get(College = request['College'])
-        if "StateId" in request:
-            userObj.StateId=StateV1_0.objects.get(StateName = request['State'])
-
+        if "College" in request:
+            college = CollegeV1_0.objects.get(College=request['College'])
+            userObj.CollegeId=college
+        if "State" in request:
+            state = StateV1_0.objects.get(StateName = request['State'])
+            userObj.StateId = state
 
         userObj.save()
-
     except Exception as e:
-        print e
         return 0
     return
 
